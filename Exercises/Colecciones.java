@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 
 
 public class Colecciones {
@@ -39,9 +40,21 @@ public class Colecciones {
     }
 
     public HashMap<Integer, String>  obtenerHash(){
-        int length = cars.size() + bikes.length + bicicles.size();// obtener tamaño
-        int count =1;
-        //this.transport.forEach((key, value) -> System.out.println(key + " " + value)); //imprimir para pruebas
-        return this.transport;
+        LinkedHashSet<Sting> elementos = new LinkedHashSet<>();
+
+        elementos.addAll(cars);
+        for(String bike : bikes){
+            elementos.add(bike);
+        }
+        elementos.addAll(bicicles);
+
+        transport.clear();
+        int clave = 1;
+        for (String elemento : elementos){
+            if (elemento != null && !elemento.trim().isEmpty()){
+            transport.put(clave ++, elemento);
+            }
+        }
+        return transport;
     }
 }

@@ -26,14 +26,15 @@ public class Sobrecarga {
         public Profesor(String nombre, String materia, int calificacion){
             super(nombre, materia, calificacion);
         }
-        public String reprobar(){
-            if(this.calificacion>5)
-                return ">:) Sacaste "+this.calificacion+" en " + this.materia;
-            else
-                return ":(";
-        }
-    }
 
+        @Override
+        public String reprobar(){
+            if(this.calificacion>5){
+                return ">:) Sacaste "+this.calificacion+" en " + this.materia;
+            }
+            return ":(";
+    }
+    }
     /**
      * Alumno
      */
@@ -41,8 +42,10 @@ public class Sobrecarga {
         public Alumno(String nombre, String materia, int calificacion){
             super(nombre, materia, calificacion);
         }
-        public String reprobar(){
 
+        @Override 
+        public String reprobar(){
+            return calificacion < 6? ":(" : ":)";
         }
         
     }
